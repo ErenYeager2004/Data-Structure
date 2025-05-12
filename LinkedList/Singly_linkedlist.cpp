@@ -22,13 +22,23 @@ void insertAtHead(Node* &head,int val){
 void display(Node* head){
 
     Node* temp = head;
-
     while(temp!=nullptr){
         cout<<temp->val<<"->";
         temp=temp->next;
     }
     cout<<"X"<<endl;
     
+}
+
+void insertAtTail(Node* &head,int val){
+    Node* new_node = new Node(val);
+
+    Node* temp = head;
+    while(temp->next!=nullptr){
+        temp=temp->next;
+
+    }
+    temp->next=new_node;
 }
 
 int main(){
@@ -38,6 +48,8 @@ int main(){
     insertAtHead(head,4);
     insertAtHead(head,5);
     
+    display(head);
+    insertAtTail(head,10);
     display(head);
 
     //cout<<n->val<<" "<<n->next;
