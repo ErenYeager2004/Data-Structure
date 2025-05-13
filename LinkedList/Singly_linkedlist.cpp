@@ -72,7 +72,29 @@ void updateAtAnypos(Node* head,int val,int pos){
     
 }
 
+void deleteAtHead(Node* &head){
+    if(!head) return;
+    //delete at head
+        Node* temp = head;
+        head=head->next;
+        delete(temp);
+        return;
+}
+
+void deleteAtEnd(Node* &head){
+     //delete at end 
+    Node* second_last = head;
+    while(second_last->next->next!=nullptr){
+        second_last=second_last->next;
+    }
+
+    Node* temp = second_last->next;
+    second_last->next=nullptr;
+    delete(temp);
+}
+
 int main(){
+    
     Node* head = nullptr;
     insertAtHead(head,2);
     insertAtHead(head,3);
@@ -89,5 +111,10 @@ int main(){
     updateAtAnypos(head,33,2);
     display(head);
 
+    deleteAtHead(head);
+    display(head);
+
+    deleteAtEnd(head);
+    display(head);
     //cout<<n->val<<" "<<n->next;
 }
