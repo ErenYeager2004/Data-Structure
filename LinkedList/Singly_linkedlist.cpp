@@ -93,6 +93,26 @@ void deleteAtEnd(Node* &head){
     delete(temp);
 }
 
+void deleteAtAnyPos(Node* head,int pos){
+    if(pos==0)
+    {
+        deleteAtHead(head);
+    }
+
+    Node* prev = head;
+    int curpos=0;
+    while(curpos!=pos-1){
+        prev=prev->next;
+        curpos++;
+    }
+
+    //prev is pointing to node at pos-1
+
+    Node* temp= prev->next;
+    prev->next = prev->next->next;
+    delete(temp);  
+}
+
 int main(){
     
     Node* head = nullptr;
@@ -115,6 +135,9 @@ int main(){
     display(head);
 
     deleteAtEnd(head);
+    display(head);
+
+    deleteAtAnyPos(head,2);
     display(head);
     //cout<<n->val<<" "<<n->next;
 }
