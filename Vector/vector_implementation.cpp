@@ -1,18 +1,21 @@
 #include<iostream>
 #include<vector>
+#define fo(i,n) for(i=0;i<n;i++)
+#define in cin
 using namespace std;
 
 
 int main(){
-    int n;
+    int n,i;
     cout<<"Enter the size of the vector :";
     cin>>n;
     vector<int>vec(n);
-    for(int i=0;i<vec.size();i++){
+    
+    fo(i,n){
         cout<<"Enter element of vector at "<<i<<" position :";
-        cin>>vec[i];
+        in>>vec[i];
     }
-
+    
     for(int i:vec){
         cout<<i<<endl;
     }
