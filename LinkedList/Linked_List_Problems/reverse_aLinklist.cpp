@@ -1,5 +1,7 @@
 #include<iostream>
+#include<stack>
 #define start int main()
+#define st stack<int>
 using namespace std;
 
 class Node
@@ -69,6 +71,23 @@ public:
         head = prev;
     }
     
+    // using stack
+    void reverse_using_stack(Node *head){
+        Node *temp = head;
+        st s;
+        while(temp!=nullptr){
+            s.push(temp->val);
+            temp = temp -> next;
+        }
+
+        temp = head;
+
+        while(!s.empty()){
+           temp->val = s.top();
+           s.pop();
+           temp = temp->next; 
+        }
+    }
 };
 
 start{
@@ -80,6 +99,8 @@ start{
     ll.insertEle(5);
     ll.insertEle(6);
     ll.display();
-    ll.reverse();
+   // ll.reverse();
+    //ll.display();
+    ll.reverse_using_stack(ll.head);
     ll.display();
 }
