@@ -85,7 +85,7 @@ int main(){
     ll2.insertEle(1);
     ll2.insertEle(2);
     ll2.insertEle(3);
-    ll2.insertEle(4);
+    ll2.insertEle(4); 
 
     cout<<checkEqualLinkedlist(ll1.head,ll2.head);
 
