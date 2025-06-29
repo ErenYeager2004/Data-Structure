@@ -14,6 +14,6 @@ int main(){
 
     while(!Q.empty()){
         cout<<Q.front()<< " ";
-        Q.pop();
+        Q.pop(); 
     }
 }
