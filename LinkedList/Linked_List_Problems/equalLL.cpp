@@ -87,6 +87,9 @@ int main(){
     ll2.insertEle(3);
     ll2.insertEle(4); 
 
-    cout<<checkEqualLinkedlist(ll1.head,ll2.head);
-
+    if(checkEqualLinkedlist(ll1.head, ll2.head)){
+        cout<<"Both linked lists are equal"<<endl;
+    } else {
+        cout<<"Linked lists are not equal"<<endl;
+    }
 }
