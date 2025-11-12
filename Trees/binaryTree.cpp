@@ -1,70 +1,56 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
+class Node{
+  public :
+  int data;
+  Node* left;
+  Node* right;
 
-class Node {
-    public:
-        int data;
-        Node* right;
-        Node* left;
-    
-    Node(int val){
-        data = val;
-        this->left = nullptr;
-        this->right = nullptr;
-    }
+  public :
+  Node(int data) {
+    this->data = data;
+    this->left = nullptr;
+    this->right = nullptr;
+  }
 };
 
-Node* createTree(Node* root){
-    cout << "Enter data for node: ";
-    int data;
-    cin >> data;
-
-    if(data == -1){
-        return nullptr;
-    }
-
-    root = new Node(data);
-
-    cout << "Enter data for left of " << data << endl;
-    root->left = createTree(root->left);
-
-    cout << "Enter data for right of " << data << endl;
-    root->right = createTree(root->right);
-
-    return root;
-}
-void levelOrderTraversal(Node* root){
-    queue<Node*>q;
-    q.push(root);
-
-    while(!q.empty()){
-        Node* temp = q.front();
-        cout<<temp -> data <<" ";
-        q.pop();
-    
-        if(temp->left){
-            q.push(temp->left);
-        }
-        if(temp->right){
-            q.push(temp->right);
-        }
-    }
+void preOrder(Node* root){
+  if(root == nullptr) return;
+  cout << root->data << " ";
+  preOrder(root->left);
+  preOrder(root->right);
 }
 
-void PreOrder(Node* root){
-    if(root == nullptr){
-        return;
-    }
+void inOrder(Node* root) {
+  if(root == nullptr) return;
 
-    cout<<root->data;
-    PreOrder(root->left);
-    PreOrder(root->right);
+  inOrder(root->left);
+  cout << root->data << " ";
+  inOrder(root->right);
 }
-int main(){
-    Node* root = nullptr;
 
-    root = createTree(root);
+void postOrder(Node* root) {
+  if(root == nullptr) return;
+  postOrder(root->left);
+  postOrder(root->right);
+  cout << root->data << " ";
+}
 
-    //levelOrderTraversal(root);
-    PreOrder(root);
+int main() {
+  Node* root = new Node(1);
+  root->left = new Node(2);
+  root->left->left = new Node(4);
+  root->left->right = new Node(5);
+  root->left->right->left = new Node(6);
+  root->right = new Node(3);
+  root->right->left = new Node(7);
+  root->right->right = new Node(8);
+  root->right->right->left = new Node(9);
+  root->right->right->right = new Node(10);
+
+  preOrder(root);
+  cout<<endl;
+  inOrder(root);
+  cout<<endl;
+  postOrder(root);
 }
